@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMN Service - Buy & Sell Anything</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">GMN Service</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#buy">Buy</a></li>
+            <li><a href="#sell">Sell</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to <span class="highlight">GMN Service</span></h1>
+            <p>Your one-stop destination to Buy, Sell, and Trade Vehicles, Goods, and Services.</p>
+            <div class="cta-buttons">
+                <button onclick="showSection('buy')" class="btn btn-primary">Start Buying</button>
+                <button onclick="showSection('sell')" class="btn btn-secondary">Post an Ad</button>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Tabs for Buy/Sell switching (Alternative to Nav) -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showSection('buy')">Buy Items</button>
+            <button class="tab-btn" onclick="showSection('sell')">Sell Item / Service</button>
+        </div>
+
+        <!-- Buy Section -->
+        <section id="buy-section" class="content-section active-section">
+            <h2 class="section-title">Latest Items for Sale</h2>
+            
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterItems('all')">All</button>
+                <button class="filter-btn" onclick="filterItems('vehicle')">Vehicles</button>
+                <button class="filter-btn" onclick="filterItems('electronic')">Electronics</button>
+                <button class="filter-btn" onclick="filterItems('service')">Services</button>
+            </div>
+
+            <div class="items-grid" id="items-grid">
+                <!-- Items will be injected here by JS -->
+            </div>
+        </section>
+
+        <!-- Sell Section -->
+        <section id="sell-section" class="content-section">
+            <h2 class="section-title">Post Your Advertisement</h2>
+            <div class="form-container">
+                <form id="ad-form">
+                    <div class="form-group">
+                        <label for="item-name">Item / Service Name</label>
+                        <input type="text" id="item-name" placeholder="e.g. Toyota Corolla 2018" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="vehicle">Vehicle</option>
+                            <option value="electronic">Electronics & Goods</option>
+                            <option value="service">Service</option>
+                            <option value="property">Property</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price (LKR)</label>
+                        <input type="number" id="price" placeholder="e.g. 5500000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image-url">Image URL</label>
+                        <input type="url" id="image-url" placeholder="https://example.com/image.jpg">
+                        <small>Paste an image link here for the ad.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="4" placeholder="Describe your item or service..." required></textarea>
+                    </div>
+
+                    <h3 style="margin-top: 20px; color: var(--accent);">Seller Details</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="seller-name">Your Name</label>
+                            <input type="text" id="seller-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="seller-contact">Contact Number</label>
+                            <input type="tel" id="seller-contact" placeholder="07X XXXXXXX" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">Post Advertisement</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Contact Section -->
+     <section id="contact" style="padding: 50px 20px; background: #222; color: white; text-align: center;">
+        <h2>Contact Us</h2>
+        <p>Need help? Contact GMN Service support.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+     </section>
+
+    <footer>
+        <p>&copy; 2026 GMN Service. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
