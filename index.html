@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oman Macroeconomic Performance Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>MacroData</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" onclick="switchTab('dashboard')">
+                    <i class="fa-solid fa-grid-2"></i> Dashboard
+                </li>
+                <li onclick="switchTab('data')">
+                    <i class="fa-solid fa-table"></i> Data Sheet
+                </li>
+            </ul>
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="user-info">
+                    <span>Admin User</span>
+                    <small>View Only</small>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div class="header-title">
+                    <h1>Oman Macroeconomic Performance Dashboard</h1>
+                    <p>Analysis: Real • Monetary • Fiscal • External • Labour Sectors (2000-2024)</p>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-solid fa-bell"></i></button>
+                    <button class="primary-btn" onclick="exportData()"><i class="fa-solid fa-download"></i> Export
+                        Report</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Tab -->
+            <section id="dashboard-tab" class="content-tab active">
+                <div class="filters">
+                    <button class="filter-btn active" onclick="filterData('all')">All Years</button>
+                    <button class="filter-btn" onclick="filterData('5y')">Last 5 Years</button>
+                    <button class="filter-btn" onclick="filterData('10y')">Last 10 Years</button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Real GDP Growth Trend -->
+                    <div class="card chart-card">
+                        <h3><i class="fa-solid fa-chart-line"></i> Real GDP Growth & Inflation</h3>
+                        <canvas id="gdpInflationChart"></canvas>
+                    </div>
+
+                    <!-- Export Composition (Pie) -->
+                    <div class="card chart-card">
+                        <h3><i class="fa-solid fa-chart-pie"></i> Export Composition</h3>
+                        <div class="chart-container">
+                            <canvas id="exportPieChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Unemployment Rate -->
+                    <div class="card chart-card">
+                        <h3><i class="fa-solid fa-users"></i> Unemployment Rate</h3>
+                        <canvas id="unemploymentChart"></canvas>
+                    </div>
+
+                    <!-- Public Debt -->
+                    <div class="card chart-card">
+                        <h3><i class="fa-solid fa-sack-dollar"></i> Public Debt (% of GDP)</h3>
+                        <canvas id="debtChart"></canvas>
+                    </div>
+
+                    <!-- Exports -->
+                    <div class="card chart-card">
+                        <h3><i class="fa-solid fa-ship"></i> Exports (USD bn)</h3>
+                        <canvas id="exportsChart"></canvas>
+                    </div>
+
+                    <!-- GDP Per Capita -->
+                    <div class="card chart-card wide">
+                        <h3><i class="fa-solid fa-wallet"></i> GDP per Capita (USD)</h3>
+                        <canvas id="gdpCapitaChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Tab -->
+            <section id="data-tab" class="content-tab">
+                <div class="card table-card">
+                    <div class="table-header">
+                        <h3>Detailed Macroeconomic Data</h3>
+                        <input type="text" placeholder="Search data..." id="tableSearch" onkeyup="searchTable()">
+                    </div>
+                    <div class="table-responsive">
+                        <table id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>GDP Growth (%)</th>
+                                    <th>Inflation (%)</th>
+                                    <th>Unemployment (%)</th>
+                                    <th>Public Debt (%)</th>
+                                    <th>GDP per Capita ($)</th>
+                                    <th>Exports ($ bn)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Rows will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
